@@ -60,7 +60,23 @@ body {
 
 .reddot {
   color: var(--signal);
+  display: inline-flex;
+  gap: 0.02em;
   padding-left: 4px;
+}
+.reddot span {
+  animation: ellipsisFade 2.4s var(--ease-inout) infinite;
+  opacity: 0;
+}
+.reddot span:nth-child(2) {
+  animation-delay: 0.28s;
+}
+.reddot span:nth-child(3) {
+  animation-delay: 0.56s;
+}
+@keyframes ellipsisFade {
+  0%, 72%, 100% { opacity: 0; }
+  18%, 48% { opacity: 1; }
 }
 
 /* ----- Layout: 100vh page, three-row grid ----- */
@@ -396,4 +412,5 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .badge .pulse { animation: none; }
+  .reddot span { animation: none; opacity: 1; }
 }
