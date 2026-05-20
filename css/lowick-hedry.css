@@ -1,0 +1,386 @@
+/* ============================================================
+   Lowick Hedry - brand tokens
+   Mirrors 01. Design System/colors_and_type.css.
+   ============================================================ */
+
+/* Fonts loaded from Google Fonts - Fraunces (variable) + Rethink Sans (variable) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+:root {
+  /* Brand palette */
+  --off-white:     #FAFAFA;
+  --anchor:        #0A2C4A;   /* Midnight Navy */
+  --anchor-deep:   #051A2E;
+  --whisper:       #C8D8EC;
+  --whisper-60:    #DCE6F3;
+  --whisper-20:    #ECF2F8;
+  --civic:         #4F719C;
+  --civic-deep:    #3D5A7E;
+  --signal:        #D84011;   /* Orangey-Red - the dot */
+  --signal-deep:   #B83209;
+  --signal-tint:   #FBE0D6;
+  --highlight:     #F6FFB0;
+  --ink:           #0A2C4A;
+  --ink-soft:      #1F3E5C;
+  --graphite:      #4F719C;
+  --stone:         #8A9FB7;
+
+  --font-display:  "Fraunces", "Source Serif Pro", "Georgia", serif;
+  --font-sans:     "Rethink Sans", "Inter", "Helvetica Neue", system-ui, sans-serif;
+
+  --fs-eyebrow:    12px;
+  --fs-caption:    13px;
+  --fs-body:       17px;
+
+  --r-card:        10px;
+  --r-tag:         999px;
+  --r-button:      0;
+
+  --sh-2: 0 2px 0 rgba(14,17,23,0.04), 0 12px 28px -8px rgba(14,17,23,0.12);
+
+  --ease-out:   cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-inout: cubic-bezier(0.45, 0, 0.2, 1);
+  --dur-base:   200ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--off-white);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+::selection { background: var(--signal); color: #fff; }
+
+/* ----- Layout: 100vh page, three-row grid ----- */
+.page {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(24px, 4vh, 56px) clamp(24px, 5vw, 88px);
+  overflow: hidden;
+}
+
+/* Official Lowick Hedry light gradient - rendered in CSS so the
+   page works without the asset file. */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 85% 110%, rgba(216, 64, 17, 0.18), transparent 60%),
+    radial-gradient(ellipse 80% 70% at 10% -10%, rgba(200, 216, 236, 0.85), transparent 55%),
+    radial-gradient(ellipse 70% 60% at 100% 0%,  rgba(79, 113, 156, 0.22), transparent 60%),
+    linear-gradient(135deg, #FAFAFA 0%, #ECF2F8 38%, #DCE6F3 70%, #C8D8EC 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(250,250,250,0.18) 0%, rgba(250,250,250,0) 30%, rgba(250,250,250,0.20) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+.page > * { position: relative; z-index: 1; }
+
+/* ----- Header ----- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Wordmark - recreated inline so it always renders */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.02em;
+  color: var(--anchor);
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 0.22em;
+  height: 0.22em;
+  background: var(--signal);
+  border-radius: 999px;
+  transform: translateY(-0.05em);
+}
+
+.badge {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--anchor);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--anchor);
+  border-radius: var(--r-tag);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.badge .pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 0 4px rgba(216, 64, 17, 0.18);
+  animation: pulse 2.4s var(--ease-inout) infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(216, 64, 17, 0.18); }
+  50%      { box-shadow: 0 0 0 9px rgba(216, 64, 17, 0.06); }
+}
+
+/* ----- Hero ----- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 96px);
+  padding: clamp(16px, 3vh, 40px) 0;
+}
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(16px, 2.4vh, 28px);
+}
+.eyebrow-row .rule {
+  width: 56px;
+  height: 1.5px;
+  background: var(--signal);
+  display: inline-block;
+}
+.eyebrow-row .label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--civic);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 6.4vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  color: var(--anchor);
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+.headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--civic);
+}
+.headline .dot {
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  background: var(--signal);
+  border-radius: 999px;
+  vertical-align: 0.05em;
+  margin-left: 0.04em;
+  transform: translateY(-0.05em);
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  margin: clamp(16px, 2.6vh, 28px) 0 0;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: clamp(20px, 3.2vh, 36px) 0 0;
+}
+.lede strong { color: var(--anchor); font-weight: 600; }
+
+/* ----- Contact card ----- */
+.card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--whisper-60);
+  border-radius: var(--r-card);
+  padding: clamp(24px, 3.6vh, 40px);
+  box-shadow: var(--sh-2);
+}
+.card .eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--civic);
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  color: var(--anchor);
+  margin: 0 0 22px;
+  line-height: 1.18;
+  font-variation-settings: "opsz" 144, "SOFT" 20;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: start;
+  gap: 14px;
+}
+.contact-item .icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--whisper-20);
+  border: 1px solid var(--whisper-60);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--anchor);
+  flex-shrink: 0;
+}
+.contact-item .icon svg { width: 16px; height: 16px; }
+.contact-item .label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--civic);
+  margin: 2px 0 4px;
+}
+.contact-item .value {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.05vw, 16px);
+  line-height: 1.4;
+  color: var(--anchor);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+}
+.contact-item a.value {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--anchor) 25%, transparent);
+  transition: text-decoration-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.contact-item a.value:hover {
+  text-decoration-color: var(--signal);
+  color: var(--anchor-deep);
+}
+
+/* ----- Footer ----- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: clamp(12px, 2vh, 20px);
+  border-top: 1px solid var(--whisper-60);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--civic);
+}
+.footer .copy { letter-spacing: 0.02em; }
+.footer .merger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+}
+.footer .merger .sep {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--civic);
+  opacity: 0.5;
+}
+.footer .merger .plus { color: var(--signal); font-weight: 700; }
+
+/* ----- Responsive ----- */
+@media (max-width: 920px) {
+  body { overflow: auto; }
+  .page {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    grid-template-rows: auto auto auto;
+    gap: 32px;
+    padding: 28px 22px 24px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 8px 0 0;
+  }
+  .headline { font-size: clamp(36px, 9vw, 56px); max-width: 18ch; }
+  .tagline  { font-size: clamp(18px, 4.4vw, 22px); }
+  .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .topbar { gap: 12px; }
+  .badge { font-size: 10px; padding: 6px 10px; }
+  .badge .pulse { width: 7px; height: 7px; }
+  .wordmark { font-size: 20px; }
+  .card { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge .pulse { animation: none; }
+}
