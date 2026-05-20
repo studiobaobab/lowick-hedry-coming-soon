@@ -164,13 +164,13 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--signal);
-  box-shadow: 0 0 0 4px rgba(216, 64, 17, 0.18);
+  background: var(--highlight);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--highlight) 24%, transparent);
   animation: pulse 2.4s var(--ease-inout) infinite;
 }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(216, 64, 17, 0.18); }
-  50%      { box-shadow: 0 0 0 9px rgba(216, 64, 17, 0.06); }
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in oklab, var(--highlight) 24%, transparent); }
+  50%      { box-shadow: 0 0 0 9px color-mix(in oklab, var(--highlight) 10%, transparent); }
 }
 
 /* ----- Hero ----- */
