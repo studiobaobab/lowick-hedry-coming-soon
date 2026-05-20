@@ -48,7 +48,7 @@ html, body { height: 100%; margin: 0; }
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--off-white);
+  background: #111E30;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--fs-body);
@@ -70,17 +70,18 @@ body {
   overflow: hidden;
 }
 
-/* Official Lowick Hedry light gradient - rendered in CSS so the
+/* Official Lowick Hedry dark gradient - rendered in CSS so the
    page works without the asset file. */
 .page::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 70% at 85% 110%, rgba(216, 64, 17, 0.18), transparent 60%),
-    radial-gradient(ellipse 80% 70% at 10% -10%, rgba(200, 216, 236, 0.85), transparent 55%),
-    radial-gradient(ellipse 70% 60% at 100% 0%,  rgba(79, 113, 156, 0.22), transparent 60%),
-    linear-gradient(135deg, #FAFAFA 0%, #ECF2F8 38%, #DCE6F3 70%, #C8D8EC 100%);
+    radial-gradient(ellipse 86% 54% at 92% 14%, rgba(54, 121, 210, 0.98) 0%, rgba(53, 122, 212, 0.82) 26%, rgba(31, 65, 109, 0.28) 52%, transparent 72%),
+    radial-gradient(ellipse 78% 44% at 2% 94%, rgba(52, 117, 204, 0.92) 0%, rgba(52, 119, 208, 0.62) 34%, rgba(33, 71, 122, 0.24) 58%, transparent 78%),
+    radial-gradient(ellipse 72% 58% at 12% 50%, rgba(33, 71, 122, 0.58) 0%, rgba(25, 51, 87, 0.36) 46%, transparent 72%),
+    radial-gradient(ellipse 78% 64% at 90% 84%, rgba(19, 33, 51, 0.96) 0%, rgba(19, 37, 60, 0.74) 46%, transparent 74%),
+    linear-gradient(158deg, #111E30 0%, #152640 22%, #193357 45%, #13253C 69%, #111E30 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -88,7 +89,9 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(250,250,250,0.18) 0%, rgba(250,250,250,0) 30%, rgba(250,250,250,0.20) 100%);
+  background:
+    radial-gradient(ellipse 120% 50% at 50% 0%, rgba(17, 30, 48, 0.38) 0%, rgba(17, 30, 48, 0) 64%),
+    linear-gradient(180deg, rgba(17, 30, 48, 0.08) 0%, rgba(17, 30, 48, 0) 34%, rgba(17, 30, 48, 0.44) 100%);
   z-index: 0;
   pointer-events: none;
 }
