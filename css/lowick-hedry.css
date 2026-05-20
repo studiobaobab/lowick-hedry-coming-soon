@@ -49,7 +49,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   background: #111E30;
-  color: var(--ink);
+  color: var(--whisper-20);
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.55;
@@ -57,6 +57,11 @@ body {
   overflow: hidden;
 }
 ::selection { background: var(--signal); color: #fff; }
+
+.reddot {
+  color: var(--signal);
+  padding-left: 4px;
+}
 
 /* ----- Layout: 100vh page, three-row grid ----- */
 .page {
@@ -128,16 +133,16 @@ body {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--anchor);
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 8px 14px;
-  border: 1px solid var(--anchor);
+  border: 1px solid var(--whisper-60);
   border-radius: var(--r-tag);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  color: var(--whisper-20);
 }
 .badge .pulse {
   width: 8px;
@@ -179,7 +184,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--civic);
+  color: var(--whisper);
 }
 
 .headline {
@@ -188,7 +193,7 @@ body {
   font-size: clamp(40px, 6.4vw, 88px);
   line-height: 1.02;
   letter-spacing: -0.028em;
-  color: var(--anchor);
+  color: var(--off-white);
   font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
   margin: 0;
   text-wrap: balance;
@@ -197,7 +202,7 @@ body {
 .headline em {
   font-style: italic;
   font-weight: 400;
-  color: var(--civic);
+  color: var(--whisper);
 }
 .headline .dot {
   display: inline-block;
@@ -213,13 +218,11 @@ body {
 .tagline {
   font-family: var(--font-display);
   font-weight: 400;
-  font-style: italic;
   font-size: clamp(20px, 2.2vw, 30px);
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: var(--ink-soft);
-  margin: clamp(16px, 2.6vh, 28px) 0 0;
-  max-width: 24ch;
+  color: var(--whisper-60);
+  margin: 0;
   text-wrap: balance;
 }
 
@@ -227,15 +230,15 @@ body {
   font-family: var(--font-sans);
   font-size: clamp(15px, 1.15vw, 17px);
   line-height: 1.55;
-  color: var(--ink-soft);
+  color: var(--whisper-60);
   max-width: 46ch;
   margin: clamp(20px, 3.2vh, 36px) 0 0;
 }
-.lede strong { color: var(--anchor); font-weight: 600; }
+.lede strong { color: var(--off-white); font-weight: 600; }
 
 /* ----- Contact card ----- */
 .card {
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--whisper-20);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--whisper-60);
@@ -281,13 +284,13 @@ body {
 .contact-item .icon {
   width: 36px;
   height: 36px;
-  border-radius: 999px;
-  background: var(--whisper-20);
+  border-radius: 5px;
+  background: var(--signal);
   border: 1px solid var(--whisper-60);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--anchor);
+  color: #fff;
   flex-shrink: 0;
 }
 .contact-item .icon svg { width: 16px; height: 16px; }
@@ -331,9 +334,21 @@ body {
   border-top: 1px solid var(--whisper-60);
   font-family: var(--font-sans);
   font-size: var(--fs-caption);
-  color: var(--civic);
+  color: var(--whisper);
 }
 .footer .copy { letter-spacing: 0.02em; }
+.footer a {
+  color: var(--off-white);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--off-white) 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-base) var(--ease-out), text-decoration-color var(--dur-base) var(--ease-out);
+}
+.footer a:hover {
+  color: var(--whisper-20);
+  text-decoration-color: var(--signal);
+}
 .footer .merger {
   display: inline-flex;
   align-items: center;
@@ -347,7 +362,7 @@ body {
   display: inline-block;
   width: 18px;
   height: 1px;
-  background: var(--civic);
+  background: var(--whisper);
   opacity: 0.5;
 }
 .footer .merger .plus { color: var(--signal); font-weight: 700; }
