@@ -85,6 +85,16 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+
+/* Official Lowick Hedry light gradient - rendered in CSS. */
+.lh-gradient-light {
+  background:
+    radial-gradient(ellipse 90% 70% at 85% 110%, rgba(216, 64, 17, 0.18), transparent 60%),
+    radial-gradient(ellipse 80% 70% at 10% -10%, rgba(200, 216, 236, 0.85), transparent 55%),
+    radial-gradient(ellipse 70% 60% at 100% 0%,  rgba(79, 113, 156, 0.22), transparent 60%),
+    linear-gradient(135deg, #FAFAFA 0%, #ECF2F8 38%, #DCE6F3 70%, #C8D8EC 100%);
+}
+
 .page::after {
   content: "";
   position: absolute;
@@ -105,26 +115,11 @@ body {
   gap: 24px;
 }
 
-/* Wordmark - recreated inline so it always renders */
+/* Wordmark */
 .wordmark {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(22px, 2.2vw, 30px);
-  letter-spacing: -0.02em;
-  color: var(--anchor);
-  line-height: 1;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.18em;
-  font-variation-settings: "opsz" 144, "SOFT" 0;
-}
-.wordmark .dot {
-  display: inline-block;
-  width: 0.22em;
-  height: 0.22em;
-  background: var(--signal);
-  border-radius: 999px;
-  transform: translateY(-0.05em);
+  display: block;
+  width: clamp(110px, 12vw, 150px);
+  height: auto;
 }
 
 .badge {
@@ -381,7 +376,7 @@ body {
   .topbar { gap: 12px; }
   .badge { font-size: 10px; padding: 6px 10px; }
   .badge .pulse { width: 7px; height: 7px; }
-  .wordmark { font-size: 20px; }
+  .wordmark { width: 128px; }
   .card { padding: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
