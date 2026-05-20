@@ -222,7 +222,7 @@ body {
 /* Wordmark */
 .wordmark {
   display: block;
-  width: clamp(110px, 12vw, 150px);
+  width: clamp(110px, 12vw, 140px);
   height: auto;
 }
 
