@@ -79,6 +79,89 @@ body {
   18%, 48% { opacity: 1; }
 }
 
+/* ----- Reusable animation blocks ----- */
+.anim-fade-up,
+.anim-fade-down,
+.anim-soft-pop {
+  animation-duration: 900ms;
+  animation-fill-mode: both;
+  animation-timing-function: var(--ease-out);
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.anim-fade-up {
+  animation-name: lhFadeUp;
+}
+.anim-fade-down {
+  animation-name: lhFadeDown;
+}
+.anim-soft-pop {
+  animation-name: lhSoftPop;
+}
+.anim-delay-1 { animation-delay: 120ms; }
+.anim-delay-2 { animation-delay: 220ms; }
+.anim-delay-3 { animation-delay: 340ms; }
+.anim-delay-4 { animation-delay: 480ms; }
+.anim-delay-5 { animation-delay: 620ms; }
+.anim-delay-6 { animation-delay: 780ms; }
+
+.anim-stagger > * {
+  animation: lhFadeUp 760ms var(--ease-out) both;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.anim-stagger > *:nth-child(1) { animation-delay: 760ms; }
+.anim-stagger > *:nth-child(2) { animation-delay: 880ms; }
+.anim-stagger > *:nth-child(3) { animation-delay: 1000ms; }
+.anim-stagger > *:nth-child(4) { animation-delay: 1120ms; }
+
+.anim-line-draw {
+  transform-origin: left center;
+  animation: lhLineDraw 820ms var(--ease-out) both;
+  will-change: transform, opacity;
+}
+
+@keyframes lhFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes lhFadeDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes lhSoftPop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes lhLineDraw {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
 /* ----- Layout: 100vh page, three-row grid ----- */
 .page {
   position: relative;
@@ -413,4 +496,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .badge .pulse { animation: none; }
   .reddot span { animation: none; opacity: 1; }
+  .anim-fade-up,
+  .anim-fade-down,
+  .anim-soft-pop,
+  .anim-stagger > *,
+  .anim-line-draw {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
