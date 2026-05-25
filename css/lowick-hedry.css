@@ -468,12 +468,18 @@ body {
 .footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
   padding-top: clamp(12px, 2vh, 20px);
   border-top: 1px solid var(--whisper-60);
   font-family: var(--font-sans);
   font-size: var(--fs-caption);
   color: var(--whisper);
+}
+.footer-copy {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 .footer .copy { letter-spacing: 0.02em; }
 .footer a {
@@ -525,6 +531,10 @@ body {
     align-items: center;
     gap: 6px;
     text-align: center;
+  }
+  .footer-copy {
+    flex-direction: column;
+    gap: 6px;
   }
 }
 @media (max-width: 480px) {
