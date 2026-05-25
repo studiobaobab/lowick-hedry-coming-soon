@@ -213,17 +213,48 @@ body {
 
 /* ----- Header ----- */
 .topbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
 }
 
 /* Wordmark */
 .wordmark {
   display: block;
+  grid-column: 2;
   width: clamp(110px, 12vw, 140px);
   height: auto;
+}
+
+.companies {
+  display: inline-flex;
+  justify-self: center;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.companies a {
+  color: var(--whisper);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--whisper) 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color var(--dur-base) var(--ease-out), text-decoration-color var(--dur-base) var(--ease-out);
+}
+.companies a:hover {
+  color: var(--off-white);
+  text-decoration-color: var(--signal);
+}
+.companies-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--signal);
 }
 
 .badge {
@@ -258,11 +289,19 @@ body {
 
 /* ----- Hero ----- */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(32px, 5vw, 96px);
+  justify-content: center;
+  gap: clamp(28px, 4vh, 44px);
   padding: clamp(16px, 3vh, 40px) 0;
+  text-align: center;
+}
+
+.hero-copy {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .eyebrow-row {
@@ -315,8 +354,8 @@ body {
 }
 
 .tagline {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: clamp(20px, 2.2vw, 30px);
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -478,8 +517,6 @@ body {
     padding: 28px 22px 24px;
   }
   .hero {
-    grid-template-columns: 1fr;
-    gap: 28px;
     padding: 8px 0 0;
   }
   .headline { font-size: clamp(36px, 9vw, 56px); max-width: 18ch; }
@@ -487,7 +524,12 @@ body {
   .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 @media (max-width: 480px) {
-  .topbar { gap: 12px; }
+  .topbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+  .wordmark { grid-column: 1; }
   .badge { font-size: 10px; padding: 6px 10px; }
   .badge .pulse { width: 7px; height: 7px; }
   .wordmark { width: 90px; }
